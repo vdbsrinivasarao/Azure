@@ -1,0 +1,242 @@
+http://ss64.com/ps/
+https://technet.microsoft.com/en-us/library/dd772285.aspx
+--------------------------------------------------------------------
+
+print write-host "hello world"
+
+variables --> $test = "hello"
+
+integer --> $inumber = 0
+
+boolean --> $filepresent = $true/$false
+
+------------------------------------------------------------------------
+code operations vs cmdlets
+
+if,while,for --> opeartions
+
+
+get-proces --> cmdlets
+new-item
+
+if condition
+-----
+$Number = 10
+If ($Number -gt 0) {"Bigger than zero"}
+
+
+
+
+# PowerShell script to check whether a service is installed
+Clear-Host
+$Name = "Alerter"
+$Service = Get-Service -display $Name -ErrorAction SilentlyContinue
+If (-Not $Service) {
+$Name + " is not installed on this computer."
+}
+
+while loop :
+-----
+
+while($val -ne 10)
+     {
+       $val++
+       Write-Host $val
+     }
+
+
+for loop :
+------
+
+x
+
+
+
+
+array :---
+
+$myArray = "yes","Hello","World" or $myArray = @("yes","Hello","World")
+
+$myarray.GetType()
+
+
+ArrayList :----
+
+$a = New-Object System.Collections.ArrayList
+
+$a.Add("red")
+$a.Add("yellow")
+$a.Add("orange")
+$a.Add("green")
+$a.Add("blue")
+$a.Add("purple")
+
+$a.Remove("yellow")
+
+$a.count
+
+$a.clear
+
+
+
+
+string concadination
+
+string lenghth
+
+
+
+windows cmdlets
+
+AWS cmdlets
+
+
+All types:
+set-execute remote signed
+PowerShell-Execution-Policy
+
+Set ExecutionPolicy on the Server PowerShell is secure by default. The first thing keep in mind that PowerShell won't execute scripts until you allowd to execute it means explicitly you have to give it permission to do so. PowerShell has four execution policies that govern how it should execute scripts
+
+Restricted
+No scripts allowed
+You can set PowerShell’s execution policy by using the following cmdlet: PowerShell won't run any scripts. This is PowerShell's default execution policy
+
+Setting
+Unrestricted
+No requirements; all scripts allowed
+PowerShell ignores digital signatures but will still prompt you before running a script downloaded from the Internet.
+
+RemoteSigned
+All local scripts allowed; only signed remote scripts.
+PowerShell won't run scripts downloaded from the Internet unless they have a digital signature, but scripts not downloaded from the Internet will run without prompting. If a script has a digital signature, PowerShell will prompt you before it runs a script from a publisher it hasn't seen before.
+
+AllSigned
+All scripts need to be signed
+PowerShell will only run scripts that are signed with a digital signature. If you run a script signed by a publisher PowerShell hasn't seen before, PowerShell will ask whether you trust the script's publisher.
+
+
+
+
+
+if condition with else
+
+while
+
+for loop
+
+foreach
+
+# PowerShell ForEach File Example
+Clear-Host
+ForEach ($file in Get-ChildItem  C:\)
+{
+$file.name
+}
+
+
+
+how to run powershell file or code
+
+
+
+
+how to execute a cmd line
+
+run powershell inside powershell --> start-process
+
+
+
+execute WMI commands
+
+
+
+try catch
+
+$VerbosePreference = 'Continue'
+$DebugPreference = 'Continue'
+$ErrorActionPreference = "Stop"
+
+
+try{
+
+
+
+catch{
+  write-host "###############Error while running the sql calling program. Please contact administrator.############"
+  Write-Host($error)
+  $strtime = Get-Date -format "MM-dd-yyyy HH:mm:ss:ffffff"
+  write-host "##################Application ending at $strtime##################"
+  exit 1
+  }
+
+
+
+string to append in file with \n (new line)
+
+
+function
+
+import modules
+
+
+C:\PS>$source = @"
+public class BasicTest
+{
+    public static int Add(int a, int b)
+    {
+        return (a + b);
+    }
+
+    public int Multiply(int a, int b)
+    {
+        return (a * b);
+    }
+}
+"@
+C:\PS> Add-Type -TypeDefinition $source
+
+C:\PS> [BasicTest]::Add(4, 3)
+
+C:\PS> $basicTestObject = New-Object BasicTest
+C:\PS> $e = $basicTestObject.Multiply(5, 2)
+
+
+
+
+get date
+
+sleep
+
+return
+
+exit
+
+
+
+
+
+convert string to int
+
+convert int string
+
+
+
+
+get-service | where { $_.Status -eq "running"} | select-object -last 10
+
+
+
+envirnment varable
+
+
+Task 1
+
+1. Create a folder & a file if the folder location is not present.
+2. Read the complate files from one folder.
+3. read complete file except .txt from folder.
+4. Write a function to find if process is present or Service.
+5. Using WMI commands & try to get the list of printers installed.
+6. Create a windows User & add them to created group.
+7. how to reboot the Server?
+
+
