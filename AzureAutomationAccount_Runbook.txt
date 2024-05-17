@@ -1,0 +1,44 @@
+#This powershell code will stop aws servers and connect to DB with select query....
+$AWSRegion = Get-AutomationVariable -Name "awsregion"
+$AwsCred = Get-AutomationPSCredential -Name "AwsCreds"
+$AwsAccessKeyId = $AwsCred.UserName
+$AwsSecretKey = $AwsCred.GetNetworkCredential().Password
+Set-AWSCredentials -AccessKey $AwsAccessKeyId -SecretKey $AwsSecretKey -StoreAs AWSProfile
+Set-DefaultAWSRegion -Region $AWSRegion
+$Instances = (Get-EC2Instance -ProfileName AWSProfile).Instances
+$Instances | Stop-EC2Instance -ProfileName AWSProfile -Force
+# ---------------------SQL query to execute
+$DBCred = Get-AutomationPSCredential -Name "DBConn"
+$connectionString = $DBCred.GetNetworkCredential().Password
+$query = "SELECT * FROM Movietable"
+Set-AWSCredential -AccessKey $AwsAccessKeyId -SecretKey $AwsSecretKey
+Set-DefaultAWSRegion -Region $AWSRegion
+$runningInstances = Get-EC2Instance | Where-Object { $_.State.Name -eq 'running' }
+foreach ($instance in $runningInstances) {
+    Stop-EC2Instance -InstanceId $instance.InstanceId
+    Write-Error $instance.InstanceId
+}
+# Execute SQL query
+try {
+    # Establish connection
+    $connection = New-Object System.Data.SqlClient.SqlConnection
+    $connection.ConnectionString = $connectionString
+    $connection.Open()
+
+    # Execute query
+    $command = $connection.CreateCommand()
+    $command.CommandText = $query
+    $dataAdapter = New-Object System.Data.SqlClient.SqlDataAdapter $command
+    $dataTable = New-Object System.Data.DataTable
+    $dataAdapter.Fill($dataTable)
+
+    # Output results
+    $dataTable
+} catch {
+    Write-Error "Error occurred: $_"
+} finally {
+    # Close connection
+    if ($connection.State -eq 'Open') {
+        $connection.Close()
+    }
+}
