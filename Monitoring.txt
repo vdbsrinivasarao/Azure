@@ -1,0 +1,7 @@
+Azure metrics
+Azure Alert
+MicrosoftMonitoringAgent
+Azure URL Monitoring
+Custom Metrics
+Application insights
+Log monitoring.
