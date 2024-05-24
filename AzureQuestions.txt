@@ -46,3 +46,5 @@ Table and Queue only
 Blob, Table, and File only
 Blob, File, Table, and Queue
 Blob and File only
+
+19. "An Azure resource group contains multiple Azure subscriptions." --> True or False.
