@@ -1,0 +1,48 @@
+1. Azure VM is IAAS or PAAS or SAAS?
+
+2. Calculate 10.0.128.0/252
+
+3. what are the ip address internally used by Azure in Virtual Networks?
+
+4. what is enhanced networking in Azure?
+
+5. 10.0.0.0/16 network is created & 10.0.0.0/8 Subnet is created. what is your comments.
+
+6. what is Host file & its important..?
+
+7. what is the purpose of NAT gateway?
+
+8. what is the timeout of Azure Automation?
+
+9. How to you get the information of VM from inside the same VM?
+
+10. what is meaning of Scope? explain
+
+11. what are the default port numbers of SSH, RDP, http, https, DNS, SMTP?
+
+12. Diff between SLA, SLO, SLI
+
+13. what is Azure Dedicated Hosts ??
+
+14. what is resource ID ? Ex : /subscriptions/014e7430-fd92-4579-9119-e861d926508a/resourceGroups/NP-G-8CAEFB93-CCE7-4B94-8E19-E57BF6888340/providers/Microsoft.Compute/virtualMachines/c-np-10c1092f
+
+15. what is Azure DB Service used for? If one customer want Progress DB(new Database company) in Azure , but its not present in Azure DB as Services, what will you do to support that customer?
+
+16. TCP vs UDP vs ICMP
+
+17.  Which of the following are considered vertical scaling in a cloud environment?
+
+Increase the number of virtual machines
+Provision additional containers
+Increase the CPU and RAM of a virtual machine
+Provision an additional Azure dedicated host
+
+18. 
+You have to copy your files hosted on your on-premises network to TutorialsDojo1 using AzCopy.
+
+What Azure Storage services will you be able to copy your data into?
+
+Table and Queue only
+Blob, Table, and File only
+Blob, File, Table, and Queue
+Blob and File only
