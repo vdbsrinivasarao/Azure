@@ -31,6 +31,12 @@ The disadvantage of using HTTP protocol is that every time you access the remote
 
 what is branch?
 
+A Git repository can contain multiple branches in it. There are 2 types of branches.
+Local
+Remote
+
+-----------------
+
 git -help
 
 git commit -help	
