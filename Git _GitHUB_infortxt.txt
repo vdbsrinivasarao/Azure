@@ -19,6 +19,15 @@ credential
 2. PAT
 3. SSH keys
 
+---------------
+
+We can communicate with Git repository using 2 main protocols.
+HTTP
+SSH
+
+The disadvantage of using HTTP protocol is that every time you access the remote repository, you will have to enter user id and password for authentication purpose. To avoid typing the password, you can use SSH protocol.
+
+-----------------
 
 what is branch?
 
@@ -32,6 +41,25 @@ git config --global user.name "kumar"
 git config --global user.email kumar@gmail.com
 
 git config --global --list --> this will list back the user & Email details
+
+-----------
+To create new git repository, you can use below command.
+ git init
+
+C:\testgit\Azure>git init
+Reinitialized existing Git repository in C:/testgit/Azure/.git/
+
+
+Let us take a look at the significance of each of these files and directories.
+hooks – actions to be takes after certain event like commit, update etc.
+info
+objects
+refs – list of all refs like heads, tags etc
+config – tells if repository is bare or not. Also contains lot of configuration settings like user name, email address, remotes
+description – Name of the repository
+HEAD – current ref
+
+
 
 ----------------------------------
 To view all the files in the master with full properties:
@@ -47,7 +75,7 @@ git config
 git clone
 git status
 git init
-git add
+git add vs git add .
 git rm
 git reset
 git commit
@@ -130,11 +158,9 @@ The `git stash` command temporarily stores your working directory's modification
 
 Git integrated with visual studio
 
- 
+Show real time 
 
 Git interview
-
-
 
 1. what is fork?
 2.centrailized Version control vs districted version control?
