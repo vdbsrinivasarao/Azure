@@ -73,6 +73,19 @@ To view all the files in the master with full properties:
 git ls-tree -r master
 git ls-tree --name-only -r master
 
+------
+Sample Test : 
+git clone https://github.com/kumarawsbit/Azure.git
+cd azure
+git branch
+git checkout -b orderfoldersrepo
+git status
+git add git/*
+git status
+git commit -m "order folder"
+git push --set-upstream origin orderfoldersrepo
+
+--------------
 
 Commands :
 git -help
