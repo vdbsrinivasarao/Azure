@@ -85,6 +85,7 @@ git status
 git commit -m "order folder"
 git push --set-upstream origin orderfoldersrepo
 git pull origin main
+git log --oneline
 --------------
 
 Commands :
