@@ -1,0 +1,177 @@
+Git Vs Git Hub
+
+what id GIT?
+
+centralized Version control vs districted version control?
+
+Why not SVN?
+
+installation of GIT in local system.
+
+creation of git - hub account 
+
+create a repo in git-hub?
+
+properties of git hub repo..
+
+credential
+1. user/password
+2. PAT
+3. SSH keys
+
+---------------
+
+We can communicate with Git repository using 2 main protocols.
+HTTP
+SSH
+
+The disadvantage of using HTTP protocol is that every time you access the remote repository, you will have to enter user id and password for authentication purpose. To avoid typing the password, you can use SSH protocol.
+
+-----------------
+
+what is branch?
+
+A Git repository can contain multiple branches in it. There are 2 types of branches.
+Local
+Remote
+
+-----------------
+
+git -help
+
+git commit -help	
+
+git version
+
+git config --global user.name "kumar"
+git config --global user.email kumar@gmail.com
+
+git config --global --list --> this will list back the user & Email details
+
+-----------
+To create new git repository, you can use below command.
+ git init
+
+C:\testgit\Azure>git init
+Reinitialized existing Git repository in C:/testgit/Azure/.git/
+
+
+Let us take a look at the significance of each of these files and directories.
+hooks – actions to be takes after certain event like commit, update etc.
+info
+objects
+refs – list of all refs like heads, tags etc
+config – tells if repository is bare or not. Also contains lot of configuration settings like user name, email address, remotes
+description – Name of the repository
+HEAD – current ref
+
+
+
+----------------------------------
+To view all the files in the master with full properties:
+
+git ls-tree -r master
+git ls-tree --name-only -r master
+
+
+Commands :
+git -help
+git version
+git config
+git clone
+git status
+git init
+git add vs git add .
+git rm
+git reset
+git commit
+git fetch
+git push
+git checkout -- git checkout allows navigating between different branches or reverting working tree files to a previous state.
+git diff
+git branch
+git merge
+git pull-request
+git log
+git remote -v -- Use `git remote -v` to list all the remote repositories configured for your local repository.
+git fork
+git stash
+
+
+
+
+-----------
+
+Add a file:
+
+touch githubfile.txt
+git add .
+git commit -a -m "adding files githubfile.txt"
+git push -u origin master
+It will ask the Username & password(of Github).
+
+-----------------------------------
+
+Let us assume, now we want to revert back(after git add) then
+
+git reset HEAD file.txt
+git checkout -- file.txt
+
+-----------------------------------
+
+To remove file from git :
+
+git rm file.txt
+git commit -m "deleted the file"
+git push -u origin master 
+
+-----------------------
+If you want to ignore some log file in git(which not required for push to master):
+
+create a .gitignore
+touch .gitignore
+git add .gitignore
+open the .gitignore file & add *.log
+then commit the file
+git commit -m "git ignore file is added"
+git push -u origin master 
+
+
+----------------
+For creation of New branch(here i am creating a branch name called "testing"):
+
+git branch testing
+git checkout testing--> Switched to branch 'testing' 
+touch newfile_testingBranch.txt
+git status
+git add newfile_testingBranch.txt
+git commit -m "Adding the file in branch testing"
+git push -u origin testing
+---------------
+
+**********important**************
+
+To resolve a merge conflict, edit the files to fix the conflicting changes. Then, use `git add` to stage the resolved files and `git commit` to commit the resolved merge
+
+
+
+What is `git fetch` vs. `git pull`?
+`git fetch` downloads updates from a remote repository to your local repository without integrating them. On the other hand, `git pull` not only fetches the updates but also incorporates them into your active branch.
+
+What is `git stash`?
+The `git stash` command temporarily stores your working directory's modifications, allowing you to switch branches without discarding your current progress
+
+
+Git integrated with visual studio
+
+Show real time 
+
+Git interview
+
+1. what is fork?
+2.centrailized Version control vs districted version control?
+3.what is clone?
+4. diff bet clone vs fork?
+5. what id git stash?
+
+Good Refer links : https://www.softpost.org/git/introduction-to-git
