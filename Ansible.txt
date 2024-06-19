@@ -1,0 +1,68 @@
+Installation of Ansible in ubuntu :
+
+Create a vm & open required ports.
+
+Disable the firewall..
+
+sudo ufw disable -- to disable firewall.
+
+
+Login
+
+Sudo-s
+
+$ sudo apt update
+$ sudo apt install software-properties-common
+$ sudo add-apt-repository --yes --update ppa:ansible/ansible
+$ sudo apt install ansible
+
+Ansible --version
+
+apt install python3-pip --> install pip
+
+Pip3 install "pywinrm>=0.3.0" for winrm module..
+
+sudo ufw disable --> firewall disable.
+
+Now open
+
+/ect/ansiable/hosts
+
+[win]
+10.0.0.4
+
+[win:vars]
+ansible_user=XXXXX
+ansible_password=XXXXXXXX
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+
+Test a simple ansible module
+
+ansible win -m win_ping --> to ping windows server…
+
+Run a sample small play book as below. Save it as test.yaml file
+
+---
+- hosts: win
+  gather_facts: no
+  tasks:
+   - name: Install Chocolatey on windows10
+     win_chocolatey: name=procexp state=present
+
+Then run
+ansible-playbook test.yaml
+
+On windows server :
+
+https://docs.ansible.com/ansible/latest/os_guide/windows_setup.html
+
+Install .net framework 4.8 from https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-web-installer
+
+Note : restart the VM after installation of .net frame work.
+
+Run the powershell script which will enable the winrm in windows server.
+
+Windows initial setup is ready now…
+
+Now you can run playbooks from control plane to managed nodes..
