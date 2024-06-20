@@ -67,6 +67,8 @@ Windows initial setup is ready now…
 
 Now you can run playbooks from control plane to managed nodes..
 
+https://yamlchecker.com/
+
 -------------------------------------------------Sample playbook---------------
 
 why we use community.windows??? what is ansible galaxy????
@@ -103,5 +105,30 @@ why we use community.windows??? what is ansible galaxy????
       ansible.windows.win_file:
         path: C:\sap\file.zip
         state: absent
+
+--------------------------------------------
+
+Ansible with conditions
+
+- name: Install package only on CentOS
+  ansible.builtin.yum:
+    name: nginx
+    state: present
+  when: ansible_facts['distribution'] == 'CentOS'
+
+
+
+- name: Restart nginx if config file changes
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+  when: ansible_check_mode and 'nginx' in ansible_facts.services
+
+----------------------------------------
+why we use jinja templates??
+
+
+
+
         
 
