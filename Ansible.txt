@@ -69,55 +69,39 @@ Now you can run playbooks from control plane to managed nodes..
 
 -------------------------------------------------Sample playbook---------------
 
+why we use community.windows??? what is ansible galaxy????
+
 ---
 - name: Download and extract zip file, then run a command on Windows
-  hosts: windows_hosts
-  become: yes  # Ensure Ansible has elevated privileges to perform actions
+  hosts: win
+  gather_facts: no
 
   tasks:
     - name: Create directory for zip file
       ansible.windows.win_file:
-        path: C:\temp
+        path: C:\sap
         state: directory
 
     - name: Download zip file
       ansible.windows.win_get_url:
         url: https://github.com/kumarawsbit/Azure/archive/refs/heads/main.zip
-        dest: C:\temp\main.zip
+        dest: C:\sap\main.zip
 
     - name: Unzip the file
-      ansible.windows.win_unzip:
-        src: C:\temp\file.zip
-        dest: C:\temp\extracted
+      community.windows.win_unzip:
+        src: C:\sap\main.zip
+        dest: C:\sap\extracted
         creates_path: yes
-
-    - name: Copy the folder
-      ansible.windows.win_copy:
-        src: C:\temp\extract\  # Replace with the path to the source folder
-        dest: C:\SAPApps2.0\  # Replace with the path to the destination folder
-        force: yes  # Optional - force copy, even if destination exists
-        recurse: yes  # Optional - recursively copy contents of the source directory 
-
+        
     - name: Stop the service
       ansible.windows.win_service:
-        name: "ServiceName"  # Replace with the name of the service you want to stop
-        start_mode: enabled  # Ensure service doesn't restart automatically
+        name: "Spooler"  # Replace with the name of the service you want to stop
+        start_mode: manual  # Ensure service doesn't restart automatically
         state: stopped  # Ensure service is stopped
 
-    - name: Replace words in a file
-      ansible.windows.win_replace:
-        path: C:\path\to\your\file.txt  # Replace with the path to your file
-        regexp: 'word_to_replace'  # Replace with the word or pattern to search for
-        replace: 'new_word'  # Replace with the new word or string to replace with
-
-    # Optionally, clean up the downloaded zip file and extracted directory
     - name: Remove downloaded zip file
       ansible.windows.win_file:
-        path: C:\temp\file.zip
+        path: C:\sap\file.zip
         state: absent
-
-    - name: Remove extracted directory
-      ansible.windows.win_file:
-        path: C:\temp\extracted
-        state: absent
+        
 
