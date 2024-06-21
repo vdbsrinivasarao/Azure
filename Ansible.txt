@@ -130,6 +130,25 @@ Ansible with conditions
 ----------------------------------------
 why we use jinja templates??
 
+Create a file jinja.txt 
+open it & add 
+
+My name is {{ ansible_facts }} and save the file. store the file in the control node /etc/ansible/jinja.txt
+
+create a playbook and run it.......
+
+---
+- name: Write hostname
+  hosts: all
+  tasks:
+  - name: write hostname using jinja2
+    ansible.builtin.template:
+       src: /etc/ansible/jinja.txt
+       dest: c:/sap/
+
+
+
+
 -----------------------------------------------------------------------------------
 what is ansible handlers?
 
