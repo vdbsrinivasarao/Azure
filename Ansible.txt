@@ -130,25 +130,31 @@ Ansible with conditions
 ----------------------------------------
 why we use jinja templates??
 
-------------------------------------------------------------
+-----------------------------------------------------------------------------------
 what is ansible handlers?
 
 ---
-- name: Example playbook with handlers
-  hosts: all
+- name: Download and extract zip file, then run a command on Windows
+  hosts: win
+  gather_facts: no
+
   tasks:
-    - name: Ensure a file exists
-      ansible.builtin.file:
-        path: /path/to/somefile
-        state: touch
-      notify: 
-        - restart service
+    - name: Create directory for zip file
+      ansible.windows.win_file:
+        path: C:\sap1
+        state: directory
+      notify:
+         - Run handler
 
   handlers:
-    - name: restart service
-      ansible.builtin.service:
-        name: some_service
-        state: restarted
+  - name: Run handler
+    ansible.windows.win_service:
+        name: "Spooler"  # Replace with the name of the service you want to stop
+        start_mode: manual  # Ensure service doesn't restart automatically
+        state: stopped  # Ensure service is stopped
+
+
+--------------------------------------------------------------------------
 
 -------------------------------------------------------------------------
 Ansible Roles : Its same like creating function in programming..
