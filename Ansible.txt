@@ -148,6 +148,22 @@ what is ansible handlers?
         state: restarted
 
 -------------------------------------------------------------------------
+Ansible Roles : Its same like creating function in programming..
+readabilty
+reuseablity
+
+To create a Role , you need to create full folder structure.... To make it easy, we can use galaxy command...
+
+cmd to create ansible role --> ansible-galaxy role init testrole
+
+vars
+tasks
+files
+templates
+tests
+defaults
+handlers
+
 
 
 
