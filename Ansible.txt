@@ -182,7 +182,7 @@ reuseablity
 
 To create a Role , you need to create full folder structure.... To make it easy, we can use galaxy command...
 
-cmd to create ansible role --> ansible-galaxy role init testrole
+cmd to create ansible role --> ansible-galaxy role init httpd
 
 vars
 tasks
@@ -191,6 +191,15 @@ templates
 tests
 defaults
 handlers
+
+Sample : 
+
+Create a playbook
+---
+- name: Write hostname
+  hosts: all
+  roles:
+    - httpd
 
 
 
