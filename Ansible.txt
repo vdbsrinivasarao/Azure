@@ -74,6 +74,7 @@ https://yamlchecker.com/
 why we use community.windows??? what is ansible galaxy????
 
 Ansible galaxy is a market place where you have multiple ready made roles...
+https://galaxy.ansible.com/ui/
 
 ---
 - name: Download and extract zip file, then run a command on Windows
