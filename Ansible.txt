@@ -127,6 +127,29 @@ Ansible with conditions
 ----------------------------------------
 why we use jinja templates??
 
+------------------------------------------------------------
+what is ansible handlers?
+
+---
+- name: Example playbook with handlers
+  hosts: all
+  tasks:
+    - name: Ensure a file exists
+      ansible.builtin.file:
+        path: /path/to/somefile
+        state: touch
+      notify: 
+        - restart service
+
+  handlers:
+    - name: restart service
+      ansible.builtin.service:
+        name: some_service
+        state: restarted
+
+-------------------------------------------------------------------------
+
+
 
 
 
