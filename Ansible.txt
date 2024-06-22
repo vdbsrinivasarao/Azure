@@ -147,6 +147,15 @@ create a playbook and run it.......
        dest: c:/sap/
 
 
+Conditons based jinja: 
+
+{% if ansible_facts.distribution == 'Microsoft Windows Server 2016 Datacenter' %}
+Adding content to windows 2016
+{% else %}
+Adding content to non windows 2016
+{% endif %}
+
+
 
 
 -----------------------------------------------------------------------------------
