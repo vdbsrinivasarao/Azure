@@ -175,17 +175,24 @@ $DebugPreference = 'Continue'
 $ErrorActionPreference = "Stop"
 
 
-try{
-
-
-
-catch{
-  write-host "###############Error while running the sql calling program. Please contact administrator.############"
-  Write-Host($error)
-  $strtime = Get-Date -format "MM-dd-yyyy HH:mm:ss:ffffff"
-  write-host "##################Application ending at $strtime##################"
-  exit 1
-  }
+try {
+    # Code that may throw an exception
+    $numerator = 10
+    $denominator = 0
+    $result = $numerator / $denominator
+    Write-Host "Result of division: $result"
+    $v= 10
+    $d = 10
+    $s = 20
+}
+catch {
+    # Catch block to handle the exception
+    Write-Host "Error occurred: $_.Exception.Message"
+}
+finally {
+    # Finally block (optional) executes regardless of whether an exception occurred or not
+    Write-Host "Script execution completed."
+}
 
 
 
