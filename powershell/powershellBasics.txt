@@ -44,6 +44,24 @@ while($val -ne 10)
        Write-Host $val
      }
 
+----
+$Name = "Parental Controls"
+$val = 1
+while($val -ne 10)
+     {
+       
+       $Service = Get-Service -display $Name -ErrorAction SilentlyContinue
+       Write-Host($name + " service is " + $service.Status)
+       if($service.Status -eq "stopped")
+       {
+       $val = 10
+       Write-Host($name + " service is " + $service.Status)
+       }
+
+     }
+
+----
+
 
 for loop :
 ------
