@@ -110,6 +110,7 @@ git log
 git remote -v -- Use `git remote -v` to list all the remote repositories configured for your local repository.
 git fork
 git stash
+git cherry pick
 
 
 
