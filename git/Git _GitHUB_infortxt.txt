@@ -111,6 +111,7 @@ git remote -v -- Use `git remote -v` to list all the remote repositories configu
 git fork
 git stash
 git cherry pick
+git bisect
 
 
 
