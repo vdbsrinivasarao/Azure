@@ -39,6 +39,10 @@ ansible_winrm_server_cert_validation=ignore
 
 Test a simple ansible module
 
+
+
+https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html
+
 ansible win -m win_ping --> to ping windows server…
 
 Run a sample small play book as below. Save it as test.yaml file
