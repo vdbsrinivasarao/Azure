@@ -215,6 +215,15 @@ Create a playbook
     - httpd
 
 
+----------------------------
+
+Ansible tower
+
+Ansible Registry
+
+ansible register
+
+
 
 
 
