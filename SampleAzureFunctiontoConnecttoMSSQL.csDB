@@ -1,0 +1,72 @@
+using System;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
+using Azure.Identity;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Host;
+using Azure.Security.KeyVault.Secrets;
+using System.Data.SqlClient;
+
+namespace FunctionApp5
+{
+    public static class Function1
+    {
+        [FunctionName("Function1")]
+        public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "moviename/{name:alpha}")] HttpRequestMessage req, string name, TraceWriter log)
+        {
+            string outputs;
+            try
+            {
+                log.Info("C# HTTP trigger function processed a request.");
+
+                //DBConnDetails = secret.Value.Value;
+
+                // parse query parameter
+                if (name == null)
+                {
+                    // Get request body
+                    dynamic data = await req.Content.ReadAsAsync<object>();
+                    name = data?.name;
+                }
+                using (SqlConnection cnn = new SqlConnection("Server=tcp:ffffff.database.windows.net,1433;Initial Catalog=ForDemos;Persist Security Info=False;User ID=kumar;Password=fffffff;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+                {
+                    cnn.Open();
+                    
+                    Console.WriteLine("Connection Open ! ");
+                    String strQuery = "Select top 1 * from [MovieTable] where [MovieName] = '" + name + "'";
+                    SqlCommand command = new SqlCommand(strQuery, cnn);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            //WriteLog("inserting new Name : " + reader["Name"]);
+                            name = "Movie Name : " + reader["MovieName"] + " Rating : " + reader["Rating"] + " Director : " + reader["Director"] + " Country : " + reader["country"] + " Summary : " + reader["summary"];
+                            
+                        }
+                    }
+                }
+                var response = req.CreateResponse(HttpStatusCode.OK);
+                response.Content = new StringContent("Hello Movie Details are : " + name, Encoding.UTF8, "text/plain");
+                return response;
+                //return response;
+                //return req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+                //== null
+                //? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
+                //: req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+            }
+            catch (Exception ex)
+            {
+                //return req.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                var response = req.CreateResponse(HttpStatusCode.InternalServerError);
+                response.Content = new StringContent("error --> " + ex.Message, Encoding.UTF8, "text/plain");
+                return response;
+            }
+
+            
+    }
+    }
+}
