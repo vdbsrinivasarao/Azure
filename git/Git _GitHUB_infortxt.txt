@@ -112,6 +112,8 @@ git fork
 git stash
 git cherry pick
 git bisect
+git merge vs git rebase
+git merge force
 
 
 
