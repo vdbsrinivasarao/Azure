@@ -110,7 +110,7 @@ https://galaxy.ansible.com/ui/
 
     - name: Remove downloaded zip file
       ansible.windows.win_file:
-        path: C:\sap\file.zip
+        path: C:\sap\main.zip
         state: absent
 
 --------------------------------------------
