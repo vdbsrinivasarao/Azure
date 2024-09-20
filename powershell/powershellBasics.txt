@@ -66,9 +66,20 @@ while($val -ne 10)
 for loop :
 ------
 
-x
+# Get all services on the system
+$services = Get-Service
+
+# Loop through each service
+for ($i = 0; $i -lt $services.Count; $i++) {
+    # Get the service
+    $service = $services[$i]
+
+    # Display the service name and status
+    Write-Output "Service Name: $($service.Name), Status: $($service.Status), $($service.DisplayName)"
+}
 
 
+--------
 
 
 array :---
