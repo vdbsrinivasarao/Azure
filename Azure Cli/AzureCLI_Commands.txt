@@ -60,6 +60,8 @@ az storage blob upload -c "public" -f "c:\example.txt" -n "example.txt"
 Service principal
 
 ------------------------------
+Worked commands for vdb(dt2-10-24)
+az storage blob upload -c "public" -f "c:\democli\Testing cli.txt" -n "Testing cli.txt" --account-name vdbsa --container-name vdbcontainer
 
 
 
