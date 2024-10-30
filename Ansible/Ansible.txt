@@ -46,6 +46,8 @@ Test a simple ansible module
 https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html
 
 ansible win -m win_ping --> to ping windows server…
+sample command to delete folder in worker windows node
+ ansible win -m win_file -a "path='d://ansibletest' state=absent"
 
 Run a sample small play book as below. Save it as test.yaml file
 
