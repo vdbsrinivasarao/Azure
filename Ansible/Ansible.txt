@@ -70,6 +70,9 @@ Install .net framework 4.8 from https://dotnet.microsoft.com/en-us/download/dotn
 Note : restart the VM after installation of .net frame work.
 
 Run the powershell script which will enable the winrm in windows server.
+how to test winrm running in window server
+Get-Service WinRM
+winrm quickconfig
 
 Windows initial setup is ready now…
 
