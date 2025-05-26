@@ -9,8 +9,15 @@ $Instances = (Get-EC2Instance -ProfileName AWSProfile).Instances
 $Instances | Stop-EC2Instance -ProfileName AWSProfile -Force
 # ---------------------SQL query to execute
 $DBCred = Get-AutomationPSCredential -Name "DBConn"
-$connectionString = $DBCred.GetNetworkCredential().Password
-$query = "SELECT * FROM Movietable"
+# Extract username and password
+$username = $DBCred.UserName
+$password = $DBCred.GetNetworkCredential().Password
+# Build connection string manually
+$server = "your_server_name"         # <-- Replace with your SQL server
+$database = "your_database_name"     # <-- Replace with your DB name
+$connectionString = "Data Source=$server;Initial Catalog=$database;User ID=$username;Password=$password"
+
+$query = "SELECT * FROM your table name"
 Set-AWSCredential -AccessKey $AwsAccessKeyId -SecretKey $AwsSecretKey
 Set-DefaultAWSRegion -Region $AWSRegion
 $runningInstances = Get-EC2Instance | Where-Object { $_.State.Name -eq 'running' }
